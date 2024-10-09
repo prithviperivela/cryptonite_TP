@@ -235,7 +235,48 @@ The exercie here says us to do:
 
 
 
-**
+**finding files
+in this exercise we will learn about the find command 
+The points that are given about this command in this exercise are:
+>The find command takes optional arguments describing the search criteria and the search location. If you don't specify a search criteria, find matches every file. If you don't specify a search location, find uses the current working directory (.). For example:
+>![image](https://github.com/user-attachments/assets/15d1947f-33b6-4b15-b771-918a723d38bc)
+>
+>And when specifying the search location:
+>![image](https://github.com/user-attachments/assets/6fb965be-7ea1-4e36-a392-a2c09be1a713)
+>
+>And, of course, we can specify the criteria! For example, here, we filter by name:
+>![image](https://github.com/user-attachments/assets/0b84c7ab-0854-4867-a3b2-e07bd42777ba)
+>
+>You can search the whole filesystem if you want!
+>![image](https://github.com/user-attachments/assets/b2f7bb58-357a-4445-929d-a90880327ade)
+
+This exercise here says us to do :
+>Now it's your turn. I've hidden the flag in a random directory on the filesystem. It's still called flag. Go find it!
+
+>several notes. First, there are other files named flag on the filesystem. Don't panic if the first one you try doesn't have the actual flag in it. Second, there're plenty of places in the filesystem that are not accessible to a normal user. These will cause find to generate errors, but you can ignore those; we won't hide the flag there! Finally, find can take a while; be patient!
+
+* here in the exercise it is said that  there is a flag file in the filesystem where the required flag is there
+* but in order to get it we need to find the flag using the find command
+* but there are multiple files with the name flag when you use the find command
+* so we need to cat each and every directory which does not say permission denied
+* then you will find the flag in one directory
+
+  ![image](https://github.com/user-attachments/assets/d0efc4dd-05ee-470d-8a7b-79fdce55ddb9)
+  ![image](https://github.com/user-attachments/assets/1e6981ad-c697-493b-86cb-6d8c63044194)
+
+
+
+
+
+  ** linkind
+
+
+
+
+
+
+
+
 
 
 
