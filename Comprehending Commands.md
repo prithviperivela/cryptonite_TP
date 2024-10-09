@@ -1,5 +1,5 @@
 # comprehending_commands
-**cat :not the pet ,but the command
+** cat :not the pet ,but the command
 
 > cat is a most important command in linux .
 > One of the most critical Linux commands is cat. cat is most often used for reading out files
