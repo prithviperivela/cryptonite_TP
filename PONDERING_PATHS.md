@@ -1,147 +1,136 @@
-## The Root
+## DESCRIPTION
+Previously, your relative path was "naked": it directly specified the directory to descend into from the current directory. In this level, we're going to explore more explicit relative paths.
 
+In most operating systems, including Linux, every directory has two implicit entries that you can reference in paths: . and ... The first, ., refers right to the same directory, so the following absolute paths are all identical to each other:
 
+- /challenge
+- /challenge/.
+- /challenge/./././././././././
+- /./././challenge/././
 
-Here, we invoke theprogram by using the `$ /pwn` command.
+The following relative paths are also all identical to each other:
 
+- challenge
+- ./challenge
+- ./././challenge
+- challenge/.
+  
+Of course, if your current working directory is /, the above relative paths are equivalent to the above absolute paths.
 
+This challenge will get you using . in your relative paths. Get ready!
 
+## APPROACH 
 
-![image](https://github.com/user-attachments/assets/8122455a-db01-480d-a49c-49f886ca55c8)
+I entered root using cd /
 
+![image](https://github.com/user-attachments/assets/38ae29bb-e298-431e-8b05-7147e1cfea54)
+----
+## DESCRIPTION
+## APPROACH
 
+This command [/challenge/run] will copy the files present in it to the /f directory 
 
+![image](https://github.com/user-attachments/assets/fb221960-79ee-43e5-a111-d8ca1b7f0281)
+----
+## DESCRIPTION
+In this level, we'll practice refering to paths using . a bit more. This challenge will need you to run it from the /challenge directory. Here, things get slightly tricky.
 
-## Program and absolute paths
+Linux explicitly avoids automatically looking in the current directory when you provide a "naked" path. Consider the following:
 
-
-Mentioned that the file run is in challenge directory, which in turn is in the root directory.
-
-Tried using cd challenge but didnot work.
-
-The program can be invoked by `$ /challenge/run` command.
-
-
-
-
-
-
-![image](https://github.com/user-attachments/assets/feb51648-8c92-4d23-8344-9640d3146f20)
-
-
-
- Also tried doing the following 
- 
-changing directory to `/` we can do `$ ls` to see all the directories, which includes challenge, doing `$ ls` again shows the run file. Running the run file using `./` gives the following output.
-
-![image](https://github.com/user-attachments/assets/b508167b-4f69-484f-94e4-bbd5b5002f85)
-
-
-
-Also tried using the cat command using the path, the found out the location from which the program takes the flag.
-
-
-![image](https://github.com/user-attachments/assets/646db318-ddca-4038-b271-1d482cfcef3a)
-
-
-![image](https://github.com/user-attachments/assets/df6ffbca-133a-45ef-978f-3c2da6edf146)
-
-
-
-
-## Position thy self
-
-
-> [!NOTE]
-> Points to be noted:-
+> hacker@dojo:~$ cd /challenge
 > 
->the ~ in the prompt specifies the current directory.
+> hacker@dojo:/challenge$ run
+> 
+This will not invoke /challenge/run. This is actually a safety measure: if Linux searched the current directory for programs every time you entered a naked path, you could accidentally execute programs in your current directory that happened to have the same names as core system utilities! As a result, the above commands will yield the following error:
 
+> bash: run: command not found
+> 
+We'll explore the mechanisms behind this concept later, but in this challenge, will learn how to explicitly use relative paths to launch run in this scenario. The way to do this is to tell Linux that you explicitly want to execute a program in the current directory, using . like in the previous levels. Give it a try now!
+## APPROACH
 
-Running the command `$ /challenge/run` gives the directory where the run program is located. Doing cd directory , we can then run the `$ /challenge/run` command to get the flag.
+![image](https://github.com/user-attachments/assets/bd72ed2d-c612-4a7c-b0cf-af1bd94bce3c)
+--
+## DESCRIPTION
+Now you're familiar with the concept of referring to absolute paths and changing directories. If you put in absolute paths everywhere, then it really doesn't matter what directory you are in, as you likely found out in the previous three challenges.
 
+However, the current working directory does matter for relative paths.
 
+- A relative path is any path that does not start at root (i.e., it does not start with /).
+- A relative path is interpreted relative to your current working directory (cwd).
+- Your cwd is the directory that your prompt is currently located at.
 
+This means how you specify a particular file, depends on where the terminal prompt is located.
 
-![image](https://github.com/user-attachments/assets/323bd079-80f6-4191-9eea-b8b30111583d)
+Imagine we want to access some file located at /tmp/a/b/my_file.
 
+- If my cwd is /, then a relative path to the file is tmp/a/b/my_file.
+- If my cwd is /tmp, then a relative path to the file is a/b/my_file.
+- If my cwd is /tmp/a/b/c, then a relative path to the file is ../my_file. The .. refers to the parent directory.
 
+Let's try it here! You'll need to run /challenge/run using a relative path while having a current working directory of /. For this level, I'll give you a hint. Your relative path starts with the letter c 😊
 
+## APPROACH
+![image](https://github.com/user-attachments/assets/018d52c8-2cf0-4d20-8374-33ec14807c22)
+--
+## DESCRIPTION
+The Linux filesystem has tons of directories with tons of files. You can navigate around directories by using the cd (change directory) command and passing a path to it as an argument, as so:
 
-## Position elsewhere
+> hacker@dojo:~$ cd /some/new/directory
+> 
+> hacker@dojo:/some/new/directory$ cd /some/new/directory
+> 
+This affects the "current working directory" of your process (in this case, the bash shell). Each process has a directory in which it's currently hanging out. The reasons for this will become clear later in the module.
 
-Running the `$ /challenge/run` command suggests to move to /home directory and then run the file. Doing that and then running the `$ /challenge/run` gives the flag. 
+As an aside, now you can see what the ~ was in the prompt! It shows the current that your shell is located at.
 
+This challenge will require you to execute the /challenge/run program from a specific path (which it will tell you). You'll need to cd to that directory before rerunning the challenge program. Good luck!
+## APPROACH
+![image](https://github.com/user-attachments/assets/a386bd50-42d4-431b-b28d-edf7cbf9fb96)
+--
+## DESCRIPTION
+The Linux filesystem has tons of directories with tons of files. You can navigate around directories by using the cd (change directory) command and passing a path to it as an argument, as so:
 
+> hacker@dojo:~$ cd /some/new/directory
+> 
+> hacker@dojo:/some/new/directory$ cd /some/new/directory
+> 
+This affects the "current working directory" of your process (in this case, the bash shell). Each process has a directory in which it's currently hanging out. The reasons for this will become clear later in the module.
 
+As an aside, now you can see what the ~ was in the prompt! It shows the current that your shell is located at.
 
+This challenge will require you to execute the /challenge/run program from a specific path (which it will tell you). You'll need to cd to that directory before rerunning the challenge program. Good luck!
+## APPROACH
+![image](https://github.com/user-attachments/assets/a4489976-025f-4d95-bc45-d0d26c941a26)
+--
+## DESCRIPTION
+The Linux filesystem has tons of directories with tons of files. You can navigate around directories by using the cd (change directory) command and passing a path to it as an argument, as so:
 
-![image](https://github.com/user-attachments/assets/f2a35ecd-4be7-4119-8988-c2600dc7de28)
+> hacker@dojo:~$ cd /some/new/directory
+> 
+> hacker@dojo:/some/new/directory$ cd /some/new/directory
+> 
+This affects the "current working directory" of your process (in this case, the bash shell). Each process has a directory in which it's currently hanging out. The reasons for this will become clear later in the module.
 
+As an aside, now you can see what the ~ was in the prompt! It shows the current that your shell is located at.
 
+This challenge will require you to execute the /challenge/run program from a specific path (which it will tell you). You'll need to cd to that directory before rerunning the challenge program. Good luck!
+## APPROACH 
+![image](https://github.com/user-attachments/assets/463c8e67-de49-494d-af9a-4dcbbfd58da4)
+--
+## DESCRIPTION
+Let's explore a slightly more complicated path! Except for in the previous level, challenges in pwn.college are in the challenge directory and the challenge directory is, in turn, right in the root directory (/). The path to the challenge the directory is, thus, /challenge. The name of the challenge program in this level is run, and it lives in the /challenge directory. Thus, the path to the run challenge program is /challenge/run.
 
+This challenge again requires you to execute it by invoking its absolute path. You'll want to execute the run file that is in the challenge directory that is, in turn, in the / directory. If you invoke the challenge correctly, it will give you the flag. Good luck!
+## APPROACH
+![image](https://github.com/user-attachments/assets/04ee434b-9d26-4ba4-953c-4c20c314bcb0)
+--
+## DESCRIPTION
+Alright, so the filesystem starts at /. Under that, there are a whole mess of other directories, configuration files, programs, and, most importantly, flags. In this level, we've added a program right in /, called pwn, that will give you the flag. All you need to do for this level is to invoke this program!
 
-## Position yet elsewhere
+You can invoke a program by providing its path on the command line. In this case, you'll be giving the exact path, starting from /, so the path would be /pwn. This style of path, one that starts with the root directory, is referred to as an "absolute path".
 
-Running the `$ /challenge/run` command suggests to move to `/usr/share/zoneinfo/posix/Asia` directory and then run the file. Doing that and then running the `$ /challenge/run` gives the flag. 
+Start the challenge, launch a terminal, invoke the pwn program using its absolute path, and Capture that Flag! Good luck!
 
-![image](https://github.com/user-attachments/assets/90d46211-81d5-4b51-8b22-091783604c31)
-
-
-## implicit relative paths, from /
-
-
-> [!NOTE]
-> ![image](https://github.com/user-attachments/assets/2f70e3aa-aad9-45b5-888e-96602f9ea8e3)
-
-
-
-Given that the relative path should be from `/` directory. So we first `$ cd /` to jump into the `/` directory. Then we invoke using the relative path `$ challenge/run`
-
-![image](https://github.com/user-attachments/assets/08737311-2c87-449f-8986-e7e71e5eb757)
-
-
-Also note that other relative paths donot work here since the run program only returns the flag only if our cwd is `/` (as mentioned in the question).
-
-
-
-
-
-
-## explicit relative paths , from /
-
-
-Running the `$ /challenge/run` command suggests us to move to the `/` directory. After moving to the directory we can use the ./challenge/run explicit relative path to invoke the program and get the flag.
-
-
-
-![image](https://github.com/user-attachments/assets/c980ee57-e39e-4f1c-9a81-25205819bcdd)
-
-
-
-## Implicit relative path
-
-
-Given in question that we need to invoke the program from the `/challenge ` directory. For that we first move into the required directory using `$ cd /challenge` command.
-Then we can run the file using  `$ ./run` command to get the flag.
-
-
-
-![image](https://github.com/user-attachments/assets/d3d23149-bf38-467f-9327-59cd03a71ce7)
-
-
-## Home sweet home
-
-
-> [!NOTE]
-> ![image](https://github.com/user-attachments/assets/129cb8c8-0eec-4293-a2c1-7721ec7fcecc)
-
-
-
-The question says that we must provide an argument along with `/challenge/run` which is exactly three characters. This command will write the flag into the file mentioned and will display the flag.
-Also given that the file must be present in home directory. So the first two characters of the argument will be `~/` the next character can be any alphabet which will be taken as the file name.
-
-
-
-
-![image](https://github.com/user-attachments/assets/39a912ba-3a6f-46ea-a8b5-91392ff4cbc8)
+## APPROACH 
+<img width="1022" alt="image" src="https://github.com/user-attachments/assets/95523312-644c-4bbe-a0a8-56094a189d9d">
+--
