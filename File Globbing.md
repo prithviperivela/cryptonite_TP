@@ -20,6 +20,63 @@ The exiercise is:
 * so we invoke it as cd cha*
 * after that run the command /challenge/run for the file
 
+![image](https://github.com/user-attachments/assets/96d29050-8d4d-433f-b851-3fed81121580)
+
+
+
+
+
+**matching with ?
+Thi is the exercise telling about the ? keyword
+keypoints:
+>Next, let's learn about ?. When it encounters a ? character in any argument, the shell will treat it as single-character wildcard. This works like *, but only matches one character. For example:
+>![image](https://github.com/user-attachments/assets/0dcdcf8d-aa60-42d9-be4c-530d39299f0f)
+
+The exercise is:
+>Now, practice this yourself! Starting from your home directory, change your directory to /challenge, but use the ? character instead of c and l in the argument to cd! Once you're there, run /challenge/run for the flag!
+
+* it is same as doing the previous exercise 
+* but as ? can only replace one character 
+* replace all c and l with ?
+* and run /challenge/run
+
+![image](https://github.com/user-attachments/assets/c0378c4a-4749-4d5f-8277-ec57232092d0)
+
+
+
+
+
+**matching with []
+In this exercise we are going to learn about he [] keyword
+The keypoints are:
+>Next, we will cover []. The square brackes are, essentially, a limited form of ?, in that instead of matching any character, [] is a wildcard for some subset of potential characters, specified within the brackets. For example, [pwn] will match the character p, w, or n. For example:
+>![image](https://github.com/user-attachments/assets/19da353c-b637-449b-a30c-8ee6b2ea723d)
+
+The exercise is:
+>Try it here! We've placed a bunch of files in /challenge/files. Change your working directory to /challenge/files and run /challenge/run with a single argument that bracket-globs into file_b, file_a, file_s, and file_h!
+
+* here as the exercise say we need to to go to the /challenge/file directory first
+* after that run the command /challenge/run with argument file_[bash}
+* then we will get the flag
+
+![image](https://github.com/user-attachments/assets/53363069-5b2d-42b3-9716-156205304987)
+
+
+
+
+
+**matching paths with []
+
+
+
+
+
+ 
+
+
+
+
+
 
 
 
