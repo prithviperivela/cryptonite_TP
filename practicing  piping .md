@@ -91,6 +91,9 @@ The exercise is to :
 * the second half is redirecting the errors to the instructions file
 * now cat the myflag file to get the flag
 
+![WhatsApp Image 2024-10-11 at 2 44 54 PM](https://github.com/user-attachments/assets/48a549e5-22ca-4ce8-9c38-5ba945d05258)
+
+
 
 
 ** redirecting input
@@ -152,7 +155,60 @@ The exercise here is:
 
 
 ** grepping errors
+
+int this exercise we are going to learn  about grepping the errors
+keypoints are:
+>You know how to redirect errors to a file, and you know how to pipe output to another program, such as grep. But what if you wanted to grep through errors directly?
+>The > operator redirects a given file descriptor to a file, and you've used 2> to redirect fd 2, which is standard error. The | operator redirects only standard output to another program, and there is no 2| form of the operator! It can only redirect standard output (file descriptor 1).
+>The shell has a >& operator, which redirects a file descriptor to another file descriptor. This means that we can have a two-step process to grep through errors: first, we redirect standard error to standard output (2>& 1) and then pipe the now-combined stderr and stdout as normal (|)!
+
+the exercise is:
+>Try it now! Like the last level, this level will overwhelm you with output, but this time on standard error. Grep through it to find the flag!
+
+* we need to write the command /challenge/run 2>&1 | grep pwn.college
+* the first half is to redirect the output and error
+* and then grep the flag in the output and the flag
+* combining these two commands using pipe operator
+
+![image](https://github.com/user-attachments/assets/df9597a2-2ecf-47a3-a5a6-9449f3f931aa)
+
+
+
+
+
 ** duplicating piped data with tee
+
+keypoints of this exercise are:
+>When you pipe data from one command to another, you of course no longer see it on your screen. This is not always desired: for example, you might want to see the data as it flows through between your commands to debug unintended outcomes (e.g., "why did that second command not work???").
+
+Luckily, there is a solution! The tee command, named after a "T-splitter" from plumbing pipes, duplicates data flowing through your pipes to any number of files provided on the command line. For example:
+>![image](https://github.com/user-attachments/assets/3fc45565-530b-4b76-b658-ed119f75a64d)
+>
+>As you can see, by providing two files to tee, we ended up with three copies of the piped-in data: one to stdout, one to the pwn file, and one to the college file. You can imagine how you might use this to debug things going haywire:
+>
+>![image](https://github.com/user-attachments/assets/13fdd7cb-fbc4-4efe-a603-544961565a06)
+
+The exercise here is:
+>Now, you try it! This process' /challenge/pwn must be piped into /challenge/college, but you'll need to intercept the data to see what pwn needs from you!
+
+* for this we need to write the command /challenge/pwn | tee output.txt | /challenge/college
+* thyen you will get the instruction that the /challenge/pwn is missing an argument that need to be passed
+* for that you need to cat the text in which you are duplicatingthe first command
+* now run the commands using the pipe
+
+![image](https://github.com/user-attachments/assets/2bf470b6-70ee-4719-a778-45847e96618e)
+
+![image](https://github.com/user-attachments/assets/69778a65-ebd3-4940-831f-a8f16af4dbaf)
+
+
+
+
+
+** 
+
+       
+
+
 
 
 
