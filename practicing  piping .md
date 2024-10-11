@@ -204,7 +204,33 @@ The exercise here is:
 
 
 
-** 
+** writing to multiple programs
+
+> Linux follows the philosophy that "everything is a file". This is, the system strives to provide file-like access to most resources, including the input and output of running programs! The shell follows this philosophy, allowing you to, for example, use any utility that takes file arguments on the command line (such as tee) and hook it up to the input or output side of a program!
+
+> This is done using what's called Process Substitution. If you write an argument of >(rev), bash will run the rev command (this command reads data from standard input, reverses its order, and writes it to standard output!), but hook up its input to a temporary file that it will create. This isn't a real file, of course, it's what's called a named pipe
+
+![image](https://github.com/user-attachments/assets/af8f0917-227c-4be9-93c7-ea946932452d)
+
+
+
+
+
+** split-piping stderr and stdout
+Now, let's put your knowledge together. You must master the ultimate piping task: redirect stdout to one program and stderr to another.
+
+The challenge here, of course, is that the | operator links the stdout of the left command with the stdin of the right command. Of course, you've used 2>&1 to redirect stderr into stdout and, thus, pipe stderr over, but this then mixes stderr and stdout. How to keep it unmixed?
+
+You will need to combine your knowledge of >(), 2>, and |. How to do it is a task I'll leave to you.
+
+In this challenge, you have:
+
+
+* command is
+* /challenge/hack > >(/challenge/planet) 2> >(/challenge/the)
+
+![image](https://github.com/user-attachments/assets/4fa41c3b-8730-40f1-9a25-1fb25e0a9d02)
+
 
        
 
