@@ -67,6 +67,32 @@ The exercise is:
 
 **matching paths with []
 
+* the command for this exercise is:
+* /challenge/run /challenge/files/file_[bash]
+
+![image](https://github.com/user-attachments/assets/e04539be-c02f-4710-b1d4-b933e0106e2c)
+
+
+
+
+
+** mixing globs
+* the command is  cd /challenge/files
+* /challenge/run [cep]*
+![image](https://github.com/user-attachments/assets/4d6a193a-ee0d-4ba9-a84e-cb2e0745d709)
+
+
+
+
+
+** exclusionary globbing
+* the command here is cd /challenge/files
+* now /challenge/run [pwn]* 
+![image](https://github.com/user-attachments/assets/e8295a96-542d-486b-b6cb-a3b5ed967e91)
+
+
+
+
 
 
 
