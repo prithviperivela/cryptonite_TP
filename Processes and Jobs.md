@@ -124,6 +124,99 @@ The description of this exercise is:
 
 
 **BACKGOUNDING PROCESSES**
+in this exercise we are going to learn how to run the process in background 
+Th description is:
+> You've resumed processes in the foreground with the fg command. You can also resume processes in the background with the bg command! This will allow the process to keep running, while giving you your shell back to invoke more commands in the meantime.
+
+The exercise is:
+> This level's run wants to see another copy of itself running, not suspended, and using the same terminal. How? Use the terminal to launch it, then suspend it, then background it with bg and launch another copy while the first is running in the background!
+
+* here first we have to run the /challenge/run command
+* then suspend it using ctrl+z command
+* now resume the program in background using bg command
+* now again runt he command to get the flag
+
+![image](https://github.com/user-attachments/assets/79e827a4-6007-4e17-9628-3566011f139e)
+
+![image](https://github.com/user-attachments/assets/5666c831-2b85-4700-bfff-96e66dc69adf)
+
+
+
+
+
+
+**foregrounding processes**
+
+in this exercise we are going to run a backgrounded program in foreground 
+
+
+The exercise is:
+> Imagine that you have a backgrounded process, and you want to mess with it some more. What do you do? Well, you can foreground a backgrounded process with fg just like you foreground a suspended process! This level will walk you through that!
+
+* first we have to run the command /challenge/run
+* now suspend it using ctrl+z
+* now background it using bg
+* now foreground it using fg
+* and enter to get the flag
+
+![image](https://github.com/user-attachments/assets/8c135345-21c9-4c4d-a216-209d17c93d57)
+
+
+
+
+
+**STARTING BACKGROUNDED PROCESES**
+
+in this we are going to learn how to run a program in background directly 
+The description is:
+> Of course, you don't have to suspend processes to background them: you can start the backgrounded right off the bat! It's easy; all you have to do is append a & to the command, like so:
+> ![image](https://github.com/user-attachments/assets/9fe13a85-eb93-42fd-b3ac-dd612731e1cf)
+
+The exercise is:
+> Here, sleep is actively running in the background, not suspended. Now it's your turn to practice! Launch /challenge/run backgrounded for the flag!
+
+* here first we have to run the /challenge/run command
+* it says it is running in foreground run it in background
+* now run the same command with argument & to get the flag
+
+![image](https://github.com/user-attachments/assets/aa26eb93-ee23-46d3-8e41-45d4b17ea8ad)
+
+
+
+
+
+
+**PROCESS EXIT CODES**
+
+here we are going to learn how to get error codes
+The description is:
+>Every shell command, including every program and every builtin, exits with an exit code when it finishes running and terminates, This can be used by the shell, or the user of the shell (that's you!) to check if the process succeeded in its functionality (this determination, of course, depends on what the process is supposed to do in the first place).
+>You can access the exit code of the most recently-terminated command using the special ? variable (don't forget to prepend it with $ to read its value!):
+>![image](https://github.com/user-attachments/assets/d1529aa2-3d8b-4806-9e40-40f901bbed38)
+>
+>As you can see, commands that succeed typically return 0 and commands that fail typically return a non-zero value, most commonly 1 but sometimes an error code that identifies a specific failure mode.
+
+The exrecise is:
+>In this challenge, you must retrieve the exit code returned by /challenge/get-code and then run /challenge/submit-code with that error code as an argument. Good luck!
+
+* here first we have to run the command /challenge/get-code
+* now echo the error code of it with the command echo $?
+* now run the command /challenge/submit-code so that youcan get the flag
+
+![image](https://github.com/user-attachments/assets/838d5795-da40-4b92-9c21-396cccee8cfa)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
