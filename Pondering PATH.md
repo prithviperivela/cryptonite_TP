@@ -44,7 +44,29 @@ KEYPOINTS:
 The exercise is:
 > Previously, the win command that /challenge/run executed was stored in /challenge/more_commands. This time, win does not exist! Recall the final level of Chaining Commands, and make a shell script called win, add its location to the PATH, and enable /challenge/run to find it!
 
-* 
+* here first we have to write a shell script named win with cat /flag
+* now give the user execution permission
+* now echo $PATH to know its old directory
+* now add /home/hacker to it and asssign it to PATH
+* now run /challenge/run to get the flag
+
+![image](https://github.com/user-attachments/assets/c0ae83b9-e5f2-4684-aecb-68174c951575)
+
+
+
+
+
+**HIJACKING COMMANDS**
+
+The exercise is:
+> ![image](https://github.com/user-attachments/assets/b09f2c19-4d83-4088-8bd9-9823558be6fa
+
+* we need to solve it using the following steps
+
+![image](https://github.com/user-attachments/assets/b58d23b7-fd0f-41e9-8113-247132bff512)
+
+
+
 
 
 
